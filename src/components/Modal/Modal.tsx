@@ -1,9 +1,6 @@
 import successImage from '../../assets/success-image.png' 
+import { ModalProps } from '../../models/models'
 import { Button } from '../Button/Button'
-
-interface ModalProps {
-  setIsModalOpen: (value: boolean) => void
-}
 
 const Modal = ({ setIsModalOpen }: ModalProps) => {
   const handleClick = () => {

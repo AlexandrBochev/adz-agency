@@ -5,27 +5,7 @@ import { Positions } from "../Positions/Positions"
 import { Upload } from "../Upload/Upload"
 import { Modal } from "../Modal/Modal"
 import { Preloader } from "../Preloader/Preloader"
-
-const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-const phoneRegex = /^\+38 \(\d{3}\) \d{3} - \d{2} - \d{2}$/
-const imageTypes = ['image/jpeg', 'image/jpg']
-const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
-
-const formatPhone = (phone: string) => {
-  if (!phone) return phone
-  const phoneNumber = phone.replace(/[^\d]/g, '') 
-  if (phoneNumber.length < 2) return `+38 (0${phoneNumber})`
-  if (phoneNumber.length < 6) return `+38 (0${phoneNumber.slice(3, 5)})`
-  if (phoneNumber.length < 9) return `+38 (0${phoneNumber.slice(3, 5)}) ${phoneNumber.slice(5, 8)}`
-  if (phoneNumber.length < 11) return `+38 (0${phoneNumber.slice(3, 5)}) ${phoneNumber.slice(5, 8)} - ${phoneNumber.slice(8, 10)}`
-  return `+38 (0${phoneNumber.slice(3, 5)}) ${phoneNumber.slice(5, 8)} - ${phoneNumber.slice(8, 10)} - ${phoneNumber.slice(10, 12)}`
-}
-
-const getToken = async () => {
-  const response = await fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token')
-  const data = await response.json()
-  return data.token
-}
+import { API_URL, emailRegex, formatPhone, getToken, imageTypes, maxSizeInBytes, phoneRegex } from "../../models/models"
 
 const Form = () => {
   const [isBtnDisabled, setIsBtnDisabled] = useState(true)
@@ -104,7 +84,7 @@ const Form = () => {
       formData.append('phone', data.phone)
       formData.append('photo', data.photo)
 
-      const response = await fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
+      const response = await fetch(`${API_URL}users`, {
         method: 'POST',
         headers: { 'Token': token },
         body: formData

@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react"
 import { Preloader } from "../Preloader/Preloader"
-
-interface IPosition {
-  id: number
-  name: string
-}
-
-interface PositionsProps {
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  selectedPosition: number
-}
+import { API_URL, Position, PositionsProps } from "../../models/models"
 
 const Positions = ({ onChange, selectedPosition }: PositionsProps) => {
   const [positions, setPositions] = useState([])
@@ -22,7 +13,7 @@ const Positions = ({ onChange, selectedPosition }: PositionsProps) => {
   const getPositions = async () => {
     try {
       setIsLoading(true)
-      const response = await fetch('https://frontend-test-assignment-api.abz.agency/api/v1/positions')
+      const response = await fetch(`${API_URL}positions`)
       const data = await response.json()
       setPositions(data.positions)
       setIsLoading(false)
@@ -35,7 +26,7 @@ const Positions = ({ onChange, selectedPosition }: PositionsProps) => {
     <div className='mb-[3.125rem]'>
       { isLoading && <Preloader /> }
       <h5 className='mb-[0.875rem] text-left'>Select your position</h5>
-      { positions.map((position: IPosition) =>
+      { positions.map((position: Position) =>
         <div key={position.id}>
           <label className='flex cursor-pointer mb-3'>
             <input onChange={ onChange } value={ position.id } checked={ selectedPosition === position.id } className='hidden peer' type='radio' name="select" />

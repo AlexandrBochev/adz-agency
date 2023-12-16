@@ -1,6 +1,4 @@
-interface TextItemProps {
-  title: string
-}
+import { TextItemProps } from "../../models/models"
 
 const TextItem = ({ title }: TextItemProps) => {
   return (

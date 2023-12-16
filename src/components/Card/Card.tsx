@@ -1,27 +1,5 @@
+import { CardProps, cardFormatPhone } from "../../models/models"
 import { TextItem } from "../TextItem/TextItem"
-
-interface CardProps {
-  user: User
-}
-
-interface User {
-  id: number
-  name: string
-  email: string
-  phone: string
-  position_id: number
-  position: string
-  photo: string
-}
-
-const formatNumber = (number: string) => {
-  const cleaned = ('' + number).replace(/\D/g, '')
-    const match = cleaned.match(/^(\d{2})(\d{3})(\d{3})(\d{2})(\d{2})$/)
-  if (match) {
-    return `+${match[1]} (${match[2]}) ${match[3]} - ${match[4]} - ${match[5]}`
-  }
-  return ''
-}
 
 const Card = ({ user }: CardProps) => {
   return (
@@ -34,7 +12,7 @@ const Card = ({ user }: CardProps) => {
           <TextItem title={ user.email } />
         </a>
         <a href={`tel:${ user.phone }`} target="_self">
-          <TextItem title={ formatNumber(user.phone) } />
+          <TextItem title={ cardFormatPhone(user.phone) } />
         </a>
       </div>
     </section>

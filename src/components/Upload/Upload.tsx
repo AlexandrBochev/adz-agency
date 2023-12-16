@@ -1,13 +1,6 @@
-import { ChangeEvent } from "react"
-
-interface UploadProps {
-  isValid: boolean
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
-  fileName: string
-}
+import { UploadProps } from "../../models/models"
 
 const Upload = ({ isValid, onChange, fileName }: UploadProps) => {
-
   return (
     <div className='relative mb-[3.125rem]'>
       <div className='flex'>
@@ -32,9 +25,11 @@ const Upload = ({ isValid, onChange, fileName }: UploadProps) => {
           { fileName ? fileName.slice(0, 25) : 'Upload your photo' }
         </label>
       </div>
-      {!isValid && <span className='absolute -bottom-5 left-0 text-xs ml-4 text-red'>
-        File size should be less than 5mb and file type should be .jpg, .jpeg
-      </span>}
+      {!isValid &&
+        <span className='absolute -bottom-5 left-0 text-xs ml-4 text-red'>
+          File size should be less than 5mb and file type should be .jpg, .jpeg
+        </span>
+      }
     </div>
   )
 }

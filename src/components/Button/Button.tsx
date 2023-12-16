@@ -1,9 +1,4 @@
-interface ButtonProps {
-  title: string
-  type?: 'button' | 'submit'
-  disabled?: boolean
-  onClick?: () => void
-}
+import { ButtonProps } from "../../models/models"
 
 const Button = ({ title, onClick, disabled, type }: ButtonProps) => {
   return (

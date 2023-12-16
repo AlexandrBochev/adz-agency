@@ -1,12 +1,6 @@
 import { Button } from "../Button/Button"
 import background from '../../assets/background.webp'
-import { MouseEvent } from "react"
-
-const smoothScroll = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
-  e.preventDefault()
-  const target = document.getElementById(id)
-  target?.scrollIntoView({ behavior: 'smooth' })
-}
+import { smoothScroll } from "../../models/models"
 
 const Intro = () => {
   return (

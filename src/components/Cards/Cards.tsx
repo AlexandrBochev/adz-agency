@@ -2,16 +2,7 @@ import { useEffect, useState } from "react"
 import { Card } from "../Card/Card"
 import { Button } from "../Button/Button"
 import { Preloader } from "../Preloader/Preloader"
-
-interface User {
-  id: number
-  name: string
-  email: string
-  phone: string
-  position_id: number
-  position: string
-  photo: string
-}
+import { API_URL, User } from "../../models/models"
 
 const Cards = () => {
   const [users, setUsers] = useState([])
@@ -25,7 +16,7 @@ const Cards = () => {
   const getUsers = async (count: number) => {
     try {
       setIsLoading(true)
-      const response = await fetch(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=${count}`)
+      const response = await fetch(`${API_URL}users?page=1&count=${count}`)
       const data = await response.json()
       setUsers(data.users)
       setIsLoading(false)
