@@ -130,7 +130,7 @@ const Form = () => {
           value={ data.email }
         />
         <Input
-          type='text' label="Phone"
+          type='tel' label="Phone"
           errorMassage="Please enter a phone number in format +38 (0XX) XXX - XX - XX"
           helperMassage="+38 (0XX) XXX - XX - XX"
           onChange={ (e) => handlePhoneChange(e) }
