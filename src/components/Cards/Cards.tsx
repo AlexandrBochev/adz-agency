@@ -10,20 +10,19 @@ const Cards = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    getUsers(count)
-  }, [count])
-
-  const getUsers = async (count: number) => {
-    try {
-      setIsLoading(true)
-      const response = await fetch(`${API_URL}users?page=1&count=${count}`)
-      const data = await response.json()
-      setUsers(data.users)
-      setIsLoading(false)
-    } catch (error) {
-      alert(error)
+    const getUsers = async () => {
+      try {
+        setIsLoading(true)
+        const response = await fetch(`${API_URL}users?page=1&count=${count}`)
+        const data = await response.json()
+        setUsers(data.users)
+        setIsLoading(false)
+      } catch (error) {
+        alert(error)
+      }
     }
-  }
+    getUsers()
+  }, [count])
 
   const handleClickCount = () => {
     if (count + 6 > 100) {

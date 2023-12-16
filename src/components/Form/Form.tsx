@@ -5,7 +5,7 @@ import { Positions } from "../Positions/Positions"
 import { Upload } from "../Upload/Upload"
 import { Modal } from "../Modal/Modal"
 import { Preloader } from "../Preloader/Preloader"
-import { API_URL, emailRegex, formatPhone, getToken, imageTypes, maxSizeInBytes, phoneRegex } from "../../models/models"
+import { API_URL, EMAIL_REGEX, formatPhone, getToken, IMAGE_TYPES, MAX_SIZE_IN_BYTES, PHONE_REGEX } from "../../models/models"
 
 const Form = () => {
   const [isBtnDisabled, setIsBtnDisabled] = useState(true)
@@ -41,13 +41,13 @@ const Form = () => {
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setData({...data, email: e.target.value})
-    emailRegex.test(e.target.value) ? setIsEmailValid(true) : setIsEmailValid(false)
+    EMAIL_REGEX.test(e.target.value) ? setIsEmailValid(true) : setIsEmailValid(false)
   }
 
   const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
     setData({...data, phone: formatPhone(e.target.value).replace(/[^\d+]/g, '')})
     setPhoneValue(formatPhone(e.target.value))
-    phoneRegex.test(formatPhone(e.target.value)) ? setIsPhoneValid(true) : setIsPhoneValid(false)
+    PHONE_REGEX.test(formatPhone(e.target.value)) ? setIsPhoneValid(true) : setIsPhoneValid(false)
   }
 
   const handlePositionChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +58,7 @@ const Form = () => {
   const handleUploadChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const file = e.target.files[0]
-      if (file?.size > maxSizeInBytes || imageTypes.indexOf(file?.type) === -1) {
+      if (file?.size > MAX_SIZE_IN_BYTES || IMAGE_TYPES.indexOf(file?.type) === -1) {
         setData({...data, photo: new File([], '')})
         setIsUploadValid(false)
         setFileName('')
@@ -102,8 +102,8 @@ const Form = () => {
         })
         console.log('Response from server:', response)
       } else {
-        const data = await response.json()
         setIsLoading(false)
+        const data = await response.json()
         alert(data.message)
       }
     } catch (error) {

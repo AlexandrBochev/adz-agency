@@ -58,10 +58,10 @@ export interface UploadProps {
 
 // Constants
 export const API_URL = 'https://frontend-test-assignment-api.abz.agency/api/v1/'
-export const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-export const phoneRegex = /^\+38 \(\d{3}\) \d{3} - \d{2} - \d{2}$/
-export const imageTypes = ['image/jpeg', 'image/jpg']
-export const maxSizeInBytes = 5 * 1024 * 1024; // 5MB
+export const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+export const PHONE_REGEX = /^\+38 \(\d{3}\) \d{3} - \d{2} - \d{2}$/
+export const IMAGE_TYPES = ['image/jpeg', 'image/jpg']
+export const MAX_SIZE_IN_BYTES = 5 * 1024 * 1024; // 5MB
 
 // Functions
 export const cardFormatPhone = (number: string) => {
