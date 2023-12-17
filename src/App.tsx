@@ -7,7 +7,7 @@ import { Modal } from "./components/Modal/Modal"
 
 const App = () => {
   const [reload, setReload] = useState(false)
-  const tergetRef = useRef<HTMLUListElement>(null)
+  const tergetRef = useRef<HTMLDivElement>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (

@@ -36,12 +36,9 @@ const Cards = ({ reload, setReload, tergetRef }: CardsProps) => {
   }, [reload])
 
   return (
-    <section className='text-center pt-[8.75rem]' id="users">
+    <section className='text-center pt-[8.75rem] outline-none' id="users" tabIndex={-1} ref={ tergetRef }>
       <h2 className='mb-[3.125rem]'>Working with GET request</h2>
-      <ul
-        className='grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-[1.875rem] mb-[3.125rem] outline-none'
-        tabIndex={-1} ref={ tergetRef }
-      >
+      <ul className='grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-[1.875rem] mb-[3.125rem]'>
         { users.map((user: User) => <li key={user.id}><Card user={user} /></li>) }
       </ul>
       { isLoading && <Preloader /> }

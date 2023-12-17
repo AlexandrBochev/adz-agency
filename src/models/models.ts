@@ -34,7 +34,7 @@ export interface InputProps {
 
 export interface ModalProps {
   setIsModalOpen: (value: boolean) => void
-  tergetRef: RefObject<HTMLUListElement>
+  tergetRef: RefObject<HTMLDivElement>
 }
 
 export interface Position {
@@ -60,7 +60,7 @@ export interface UploadProps {
 export interface CardsProps {
   reload: boolean
   setReload: (reload: boolean) => void
-  tergetRef: RefObject<HTMLUListElement>
+  tergetRef: RefObject<HTMLDivElement>
 }
 
 export interface FormProps {

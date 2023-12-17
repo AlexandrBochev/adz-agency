@@ -6,6 +6,7 @@ const Modal = ({ setIsModalOpen, tergetRef }: ModalProps) => {
   const handleCleck = () => {
     setIsModalOpen(false)
     tergetRef.current?.focus()
+    tergetRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
