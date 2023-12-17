@@ -9,7 +9,7 @@ const App = () => {
       <Header />
       <main className='bg-background-gray'>
         <Intro />
-        <section className='container mx-auto'>
+        <section className='container mx-auto overflow-hidden'>
           <Cards />
           <Form />
         </section>
