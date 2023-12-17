@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { Card } from "../Card/Card"
 import { Button } from "../Button/Button"
 import { Preloader } from "../Preloader/Preloader"
-import { API_URL, User } from "../../models/models"
+import { API_URL, CardsProps, User } from "../../models/models"
 
-const Cards = () => {
+const Cards = ({ reload, setReload }: CardsProps) => {
   const [users, setUsers] = useState([])
   const [count, setCount] = useState(6)
   const [isBtnShow, setIsBtnShow] = useState(true)
@@ -24,7 +24,12 @@ const Cards = () => {
       }
     }
     getUsers()
-  }, [count])
+    
+    if (reload) {
+      setCount(6)
+      setReload(false)
+    }
+  }, [count, reload])
 
   return (
     <section className='text-center pt-[8.75rem]' id="users">

@@ -5,9 +5,9 @@ import { Positions } from "../Positions/Positions"
 import { Upload } from "../Upload/Upload"
 import { Modal } from "../Modal/Modal"
 import { Preloader } from "../Preloader/Preloader"
-import { API_URL, EMAIL_REGEX, formatPhone, getToken, IMAGE_TYPES, MAX_SIZE_IN_BYTES, PHONE_REGEX } from "../../models/models"
+import { API_URL, EMAIL_REGEX, formatPhone, FormProps, getToken, IMAGE_TYPES, MAX_SIZE_IN_BYTES, PHONE_REGEX } from "../../models/models"
 
-const Form = () => {
+const Form = ({ setReload }: FormProps) => {
   const [isBtnDisabled, setIsBtnDisabled] = useState(true)
   const [isNameValid, setIsNameValid] = useState(true)
   const [isEmailValid, setIsEmailValid] = useState(true)
@@ -92,7 +92,7 @@ const Form = () => {
 
       if (response.ok) {
         setIsLoading(false)
-        setIsModalOpen(true)
+        setReload(true)
         setData({
           name: '',
           email: '',
@@ -100,6 +100,10 @@ const Form = () => {
           position_id: 1,
           photo: new File([], '')
         })
+        setPhoneValue('')
+        setFileName('')
+        setSelectedPosition(1)
+        setIsModalOpen(true)
         console.log('Response from server:', response)
       } else {
         setIsLoading(false)

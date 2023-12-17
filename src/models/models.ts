@@ -56,6 +56,15 @@ export interface UploadProps {
   fileName: string
 }
 
+export interface CardsProps {
+  reload: boolean
+  setReload: (reload: boolean) => void
+}
+
+export interface FormProps {
+  setReload: (reload: boolean) => void
+}
+
 // Constants
 export const API_URL = 'https://frontend-test-assignment-api.abz.agency/api/v1/'
 export const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
