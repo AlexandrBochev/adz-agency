@@ -10,7 +10,7 @@ const Cards = ({ reload, setReload }: CardsProps) => {
   const [isBtnShow, setIsBtnShow] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
 
-  const tergetRef = useRef<HTMLDivElement>(null)
+  const tergetRef = useRef(null) as any
 
   useEffect(() => {
     const getUsers = async () => {
@@ -39,9 +39,12 @@ const Cards = ({ reload, setReload }: CardsProps) => {
   }, [reload])
 
   return (
-    <section className='text-center pt-[8.75rem]' id="users" tabIndex={-1} ref={ tergetRef }>
+    <section className='text-center pt-[8.75rem]' id="users">
       <h2 className='mb-[3.125rem]'>Working with GET request</h2>
-      <ul className='grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-[1.875rem] mb-[3.125rem]'>
+      <ul
+        className='grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-[1.875rem] mb-[3.125rem] outline-none'
+        tabIndex={-1} ref={ tergetRef }
+      >
         { users.map((user: User) => <li key={user.id}><Card user={user} /></li>) }
       </ul>
       { isLoading && <Preloader /> }
