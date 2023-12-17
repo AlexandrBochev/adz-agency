@@ -11,6 +11,7 @@ const Input = ({ type, label, errorMassage, helperMassage, onChange, isValid, va
         type={ type }
         onChange={ onChange }
         value={ value }
+        id={ label }
       />
       <label
         className={`
@@ -19,6 +20,7 @@ const Input = ({ type, label, errorMassage, helperMassage, onChange, isValid, va
           ${isValid ? 'text-gray' : 'text-red'}
           ${value?.length && 'mt-[-1.35rem] text-xs'}
         `}
+        htmlFor={ label }
       >
         { label }
       </label>
