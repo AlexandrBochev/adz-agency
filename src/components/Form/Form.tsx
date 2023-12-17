@@ -92,7 +92,6 @@ const Form = ({ setReload }: FormProps) => {
 
       if (response.ok) {
         setIsLoading(false)
-        setReload(true)
         setData({
           name: '',
           email: '',
@@ -103,6 +102,7 @@ const Form = ({ setReload }: FormProps) => {
         setPhoneValue('')
         setFileName('')
         setSelectedPosition(1)
+        setReload(true)
         setIsModalOpen(true)
         console.log('Response from server:', response)
       } else {

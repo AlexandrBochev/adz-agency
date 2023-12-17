@@ -11,6 +11,14 @@ const Cards = ({ reload, setReload }: CardsProps) => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    if (reload) {
+      setCount(6)
+      setIsBtnShow(true)
+      setReload(false)
+    }
+  }, [reload])
+
+  useEffect(() => {
     const getUsers = async () => {
       try {
         setIsLoading(true)
@@ -24,12 +32,7 @@ const Cards = ({ reload, setReload }: CardsProps) => {
       }
     }
     getUsers()
-    
-    if (reload) {
-      setCount(6)
-      setReload(false)
-    }
-  }, [count, reload])
+  }, [count])
 
   return (
     <section className='text-center pt-[8.75rem]' id="users">
