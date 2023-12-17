@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent } from "react"
+import { ChangeEvent, MouseEvent, RefObject } from "react"
 
 // Types
 export interface ButtonProps {
@@ -34,6 +34,7 @@ export interface InputProps {
 
 export interface ModalProps {
   setIsModalOpen: (value: boolean) => void
+  tergetRef: RefObject<HTMLUListElement>
 }
 
 export interface Position {
@@ -59,10 +60,12 @@ export interface UploadProps {
 export interface CardsProps {
   reload: boolean
   setReload: (reload: boolean) => void
+  tergetRef: RefObject<HTMLUListElement>
 }
 
 export interface FormProps {
   setReload: (reload: boolean) => void
+  setIsModalOpen: (value: boolean) => void
 }
 
 // Constants

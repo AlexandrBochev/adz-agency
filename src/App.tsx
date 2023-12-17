@@ -1,11 +1,14 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Cards } from "./components/Cards/Cards"
 import { Form } from "./components/Form/Form"
 import { Header } from "./components/Header/Header"
 import { Intro } from "./components/Intro/Intro"
+import { Modal } from "./components/Modal/Modal"
 
 const App = () => {
   const [reload, setReload] = useState(false)
+  const tergetRef = useRef<HTMLUListElement>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <>
@@ -13,10 +16,11 @@ const App = () => {
       <main className='bg-background-gray'>
         <Intro />
         <section className='container mx-auto overflow-hidden'>
-          <Cards reload={ reload } setReload={ setReload } />
-          <Form setReload={ setReload } />
+          <Cards reload={ reload } setReload={ setReload } tergetRef={ tergetRef } />
+          <Form setReload={ setReload } setIsModalOpen={ setIsModalOpen } />
         </section>
       </main>
+      { isModalOpen && <Modal setIsModalOpen={ setIsModalOpen } tergetRef={ tergetRef } /> }
     </>
   )
 }

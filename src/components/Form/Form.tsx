@@ -3,17 +3,15 @@ import { Button } from "../Button/Button"
 import { Input } from "../Input/Input"
 import { Positions } from "../Positions/Positions"
 import { Upload } from "../Upload/Upload"
-import { Modal } from "../Modal/Modal"
 import { Preloader } from "../Preloader/Preloader"
 import { API_URL, EMAIL_REGEX, formatPhone, FormProps, getToken, IMAGE_TYPES, MAX_SIZE_IN_BYTES, PHONE_REGEX } from "../../models/models"
 
-const Form = ({ setReload }: FormProps) => {
+const Form = ({ setReload, setIsModalOpen }: FormProps) => {
   const [isBtnDisabled, setIsBtnDisabled] = useState(true)
   const [isNameValid, setIsNameValid] = useState(true)
   const [isEmailValid, setIsEmailValid] = useState(true)
   const [isPhoneValid, setIsPhoneValid] = useState(true)
   const [isUploadValid, setIsUploadValid] = useState(true)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [phoneValue, setPhoneValue] = useState('')
   const [fileName, setFileName] = useState('')
@@ -146,7 +144,6 @@ const Form = ({ setReload }: FormProps) => {
         { isLoading && <Preloader /> }
         <Button title="Sign up" type="submit" disabled={ isBtnDisabled } />
       </form>
-      { isModalOpen && <Modal setIsModalOpen={ setIsModalOpen } /> }
     </section>
   )
 }

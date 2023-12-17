@@ -4,13 +4,11 @@ import { Button } from "../Button/Button"
 import { Preloader } from "../Preloader/Preloader"
 import { API_URL, CardsProps, User } from "../../models/models"
 
-const Cards = ({ reload, setReload }: CardsProps) => {
+const Cards = ({ reload, setReload, tergetRef }: CardsProps) => {
   const [users, setUsers] = useState([])
   const [count, setCount] = useState(6)
   const [isBtnShow, setIsBtnShow] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
-
-  const tergetRef = useRef(null) as any
 
   useEffect(() => {
     const getUsers = async () => {
@@ -35,7 +33,6 @@ const Cards = ({ reload, setReload }: CardsProps) => {
       setIsBtnShow(true)
       setReload(false)
     }
-    !reload && tergetRef.current?.focus()
   }, [reload])
 
   return (
