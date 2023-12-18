@@ -6,7 +6,7 @@ const Card = ({ user }: CardProps) => {
     <section className='flex flex-col items-center text-center bg-white rounded-[0.625rem] p-4'>
       <img className='w-[4.375rem] h-[4.375rem] rounded-full object-cover mb-5' src={ user.photo } alt='User photo' />
       <TextItem title={ user.name } />
-      <div className='w-full mt-5'>
+      <div className='mt-5'>
         <TextItem title={ user.position } />
         <a href={`mailto:${ user.email }`}>
           <TextItem title={ user.email } />

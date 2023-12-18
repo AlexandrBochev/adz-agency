@@ -14,7 +14,7 @@ const Cards = ({ reload, setReload, tergetRef }: CardsProps) => {
     const getUsers = async () => {
       try {
         setIsLoading(true)
-        const response = await fetch(`${API_URL}users?page=1&count=${count}`)
+        const response = await fetch(`${API_URL}users?page=1&count=${count > 100 ? 100 : count}`)
         const data = await response.json()
         setUsers(data.users)
         count > data.users.length && setIsBtnShow(false)
