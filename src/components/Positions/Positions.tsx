@@ -25,7 +25,7 @@ const Positions = ({ onChange, selectedPosition }: PositionsProps) => {
   return (
     <div className='mb-[3.125rem]'>
       { isLoading && <Preloader /> }
-      <h5 className='mb-[0.875rem] text-left'>Select your position</h5>
+      <h4 className='mb-[0.875rem] text-left'>Select your position</h4>
       { positions.map((position: Position) =>
         <div key={position.id}>
           <label className='flex cursor-pointer mb-3'>

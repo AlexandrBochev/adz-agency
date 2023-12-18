@@ -115,7 +115,7 @@ const Form = ({ setReload, setIsModalOpen }: FormProps) => {
 
   return (
     <section className='flex flex-col items-center text-center pt-[8.75rem] pb-[6.25rem]' id="form">
-      <h1 className='mb-[3.125rem]'>Working with POST request</h1>
+      <h3 className='mb-[3.125rem]'>Working with POST request</h3>
       <form onSubmit={ handleSubmit } action="" className='w-full max-w-[23.75rem]'>
         <Input
           type='text' label="Your name"

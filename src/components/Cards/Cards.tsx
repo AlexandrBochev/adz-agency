@@ -17,7 +17,7 @@ const Cards = ({ reload, setReload, tergetRef }: CardsProps) => {
         const response = await fetch(`${API_URL}users?page=1&count=${count}`)
         const data = await response.json()
         setUsers(data.users)
-        count > data.users.length || count === 100 && setIsBtnShow(false)
+        count > data.users.length && setIsBtnShow(false)
         setIsLoading(false)
       } catch (error) {
         alert(error)
@@ -42,7 +42,7 @@ const Cards = ({ reload, setReload, tergetRef }: CardsProps) => {
         { users.map((user: User) => <li key={user.id}><Card user={user} /></li>) }
       </ul>
       { isLoading && <Preloader /> }
-      { isBtnShow && <Button title={ 'Show more' } onClick={ () => count + 6 > 100 ? setCount(100) : setCount(count + 6)} /> }
+      { isBtnShow && <Button title={ 'Show more' } onClick={ () => setCount(count + 6)} /> }
     </section>
   )
 }
